@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>聯絡我們</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">首頁</a> | 
+        <a href="about.html">公司介紹</a> | 
+        <a href="contact.html">聯絡我們</a>
+    </nav>
+    <hr>
+    <h1>聯絡我們</h1>
+    
+    <!-- 先用預設表單格式 -->
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <div>
+            <label>姓名：</label><br>
+            <input type="text" name="姓名" required>
+        </div>
+        <br>
+        <div>
+            <label>電話：</label><br>
+            <input type="tel" name="電話" required>
+        </div>
+        <br>
+        <div>
+            <label>EMAIL：</label><br>
+            <input type="email" name="Email" required>
+        </div>
+        <br>
+        <div>
+            <label>聯絡內容：</label><br>
+            <textarea name="聯絡內容" rows="5" required></textarea>
+        </div>
+        <br>
+        <button type="submit">送出表單</button>
+    </form>
+</body>
+</html>
