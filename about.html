@@ -2,52 +2,291 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>關於我們 - 抹茶手搖專賣店</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2d4a3e;
+            --accent-green: #4a7c59;
+            --light-green: #eef4f0;
+            --cream-bg: #faf8f5;
+            --text-dark: #2c302e;
+            --text-muted: #5c6360;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif TC', serif, sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-green);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        /* 門市風貌展示 */
+        .store-section {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .store-img img {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .store-text {
+            padding: 2.5rem;
+        }
+
+        .store-text h2 {
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 品牌理念 & 吉祥物 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .info-card h3 {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 推薦商品列表 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 歷程時間軸 */
+        .timeline {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .timeline-list {
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--light-green);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.95rem;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+
+        @media (max-width: 768px) {
+            .store-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html">首頁</a> | 
-        <a href="about.html">公司介紹</a> | 
+        <a href="index.html">首頁</a>
+        <a href="about.html" class="active">公司介紹</a>
         <a href="contact.html">聯絡我們</a>
     </nav>
-    <hr>
-    
-    <h1>關於我們</h1>
-    <p>歡迎來到我們的抹茶手搖專賣店！我們致力於將日本靜岡與宇治的頂級抹茶文化，結合台灣道地的手搖飲特色，帶給每一位顧客最純粹、細緻的茶香體驗。</p>
 
-    <h2>門市風貌</h2>
-    <img src="STORE.jpg" alt="門市照片" width="500">
+    <div class="container">
+        <!-- 門市簡介 -->
+        <section class="store-section">
+            <div class="store-img">
+                <img src="STORE.jpg" alt="門市照片">
+            </div>
+            <div class="store-text">
+                <h2>關於我們</h2>
+                <p>歡迎來到我們的抹茶手搖專賣店！我們致力於將日本靜岡與宇治的頂級抹茶文化，結合台灣道地的手搖飲特色，帶給每一位顧客最純粹、細緻的茶香體驗。</p>
+            </div>
+        </section>
 
-    <h2>品牌理念</h2>
-    <p>嚴選100%石臼碾磨抹茶粉，堅持現點現刷，保留抹茶最原始的濃郁茶香與回甘口感。不論是微苦濃醇的純抹茶，還是搭配鮮奶、黑糖珍珠的特色調飲，都能在這裡找到屬於你的命定風味。</p>
+        <!-- 理念 & 吉祥物卡片 -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>品牌理念</h3>
+                <p>嚴選100%石臼碾磨抹茶粉，堅持現點現刷，保留抹茶最原始的濃郁茶香與回甘口感。不論是微苦濃醇的純抹茶，還是搭配鮮奶的特色調飲，都能在這裡找到屬於你的命定風味。</p>
+            </div>
+            <div class="info-card">
+                <h3>吉祥物介紹</h3>
+                <p><strong>抹茶君（Matcha-kun）</strong>：我們的招牌吉祥物！一隻頭上戴著茶葉、個性溫和害羞的小精靈，最喜歡在下午三點泡一杯香濃抹茶。</p>
+            </div>
+        </div>
 
-    <h2>吉祥物介紹</h2>
-    <p><strong>抹茶君（Matcha-kun）</strong>：我們的招牌吉祥物！一隻頭上戴著茶葉、個性溫和害羞的小精靈，最喜歡在下午三點泡一杯香濃抹茶。</p>
+        <!-- 熱門商品推薦 -->
+        <h2 class="section-title">熱門商品推薦</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="宇治濃抹茶拿鐵.jpg" alt="宇治濃抹茶拿鐵">
+                <div class="product-info">
+                    <h3>宇治濃抹茶拿鐵</h3>
+                    <p>使用特選宇治抹茶搭配小農鮮乳，苦甜平衡的完美比例。</p>
+                </div>
+            </div>
 
-    <h2>熱門商品推薦</h2>
-    <ul>
-        <li>
-            <strong>宇治濃抹茶拿鐵</strong><br>
-            <img src="宇治濃抹茶拿鐵.jpg" alt="宇治濃抹茶拿鐵" width="200"><br>
-            使用特選宇治抹茶搭配小農鮮乳，苦甜平衡的完美比例。
-        </li>
-        <li>
-            <strong>草莓抹茶冰淇淋拿鐵</strong><br>
-            <img src="草莓抹茶冰淇淋拿鐵.jpg" alt="草莓抹茶冰淇淋拿鐵" width="200"><br>
-            香甜草莓與濃醇抹茶交織，搭配滑順冰淇淋，口感層次豐富。
-        </li>
-        <li>
-            <strong>抹茶烤土司</strong><br>
-            <img src="抹茶烤土司.jpg" alt="抹茶烤土司" width="200"><br>
-            外酥內軟的現烤吐司抹上濃郁抹茶抹醬，下午茶絕配！
-        </li>
-    </ul>
+            <div class="product-card">
+                <img src="草莓抹茶冰淇淋拿鐵.jpg" alt="草莓抹茶冰淇淋拿鐵">
+                <div class="product-info">
+                    <h3>草莓抹茶冰淇淋拿鐵</h3>
+                    <p>香甜草莓與濃醇抹茶交織，搭配滑順冰淇淋，口感層次豐富。</p>
+                </div>
+            </div>
 
-    <h2>品牌歷程</h2>
-    <ol>
-        <li>2024 年：成立第一家手搖門市，專注於推廣抹茶手搖飲。</li>
-        <li>2025 年：推出吉祥物「抹茶君」周邊，深受顧客喜愛。</li>
-        <li>2026 年：持續研發新口味，拓展更多據點服務抹茶愛好者。</li>
-    </ol>
+            <div class="product-card">
+                <img src="抹茶烤土司.jpg" alt="抹茶烤土司">
+                <div class="product-info">
+                    <h3>抹茶烤土司</h3>
+                    <p>外酥內軟的現烤吐司抹上濃郁抹茶抹醬，下午茶絕配！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 品牌歷程 -->
+        <h2 class="section-title">品牌歷程</h2>
+        <div class="timeline">
+            <ul class="timeline-list">
+                <li class="timeline-item"><strong>2024 年</strong>：成立第一家手搖門市，專注於推廣抹茶手搖飲。</li>
+                <li class="timeline-item"><strong>2025 年</strong>：推出吉祥物「抹茶君」周邊，深受顧客喜愛。</li>
+                <li class="timeline-item"><strong>2026 年</strong>：持續研發新口味，拓展更多據點服務抹茶愛好者。</li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>
